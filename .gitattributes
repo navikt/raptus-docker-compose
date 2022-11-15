@@ -1,2 +1,2 @@
 #Skal alltid sjekkes ut med linux linjeending, fordi den skal kopieres inn til en linux-container
-scripts/*=lf
+scripts/* text eol=lf
