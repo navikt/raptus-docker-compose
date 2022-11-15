@@ -32,6 +32,12 @@ services:
     image: dp-rapp-api
     ports:
       - "8080:8080"
+    environment:
+      DB_HOST: "postgres.raptus.docker-internal"
+      DB_PORT: "5432"
+      DB_USERNAME: "dp-rapp-api-db-user"
+      DB_PASSWORD: "raptus"
+      DB_DATABASE: "dp-rapp-api-db"
 
 networks:
   raptus.docker-internal:
