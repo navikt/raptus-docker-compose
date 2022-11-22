@@ -1,0 +1,27 @@
+name: Deploy Kafka Topics + Kafka Connectors
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-topics:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        topic: [ meldepliktperiode-v1 ]
+        cluster: [ dev-gcp ] #, prod-gcp ]
+        include:
+          - cluster: dev-gcp
+            pool: nav-dev
+            project: raptus-dev-f2a2
+          #- cluster: prod-gcp
+          #  pool: nav-prod
+          #  project: raptus-prod-39d1
+    steps:
+      - uses: actions/checkout@v3
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: ${{ matrix.cluster }}
+          RESOURCE: .nais/kafka/topic.yaml
+          VAR: topic=${{ matrix.topic }},pool=${{ matrix.pool }},project=${{ matrix.project }}
+          PRINT_PAYLOAD: true
