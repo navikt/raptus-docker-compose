@@ -1,4 +1,4 @@
-name: Deploy Kafka Topics + Kafka Connectors
+name: Deploy Kafka Topics
 on:
   workflow_dispatch:
 
