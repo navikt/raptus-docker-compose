@@ -22,6 +22,6 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: ${{ matrix.cluster }}
-          RESOURCE: .nais/kafka/topic.yaml
+          RESOURCE: .nais/kafka/topic.yml
           VAR: topic=${{ matrix.topic }},pool=${{ matrix.pool }},project=${{ matrix.project }}
           PRINT_PAYLOAD: true
